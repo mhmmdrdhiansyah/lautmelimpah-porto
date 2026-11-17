@@ -4,26 +4,16 @@
 > nanti dipasangkan ke kartu masing-masing di `/quality-legality`.
 > Nomor sensitif boleh disamarkan sebagian sebelum scan.
 
-## 1. Tampil di website — belum ada scan (4)
+## 1. Tampil di website — sudah ada scan (10) ✓
 
-| # | Dokumen | Penerbit | Yang perlu di-upload |
-|---|---|---|---|
-| 1 | NIB (Nomor Induk Berusaha) | OSS RI | Scan lembar NIB (KBLI perdagangan besar hasil perikanan & ekspor) |
-| 2 | NPWP Perusahaan + status eksportir terdaftar | DJP | Scan NPWP (nomor boleh diblur sebagian) |
-| 3 | SKP (Sertifikat Kelayakan Pengolahan) | KKP RI | Scan SKP UPI mitra |
-| 4 | Halal Certification | BPJPH Indonesia | Scan sertifikat halal |
+NIB, NPWP, SKP, Halal, HACCP, HC/BKIPM, COO (Form E & JIEPA), COO Form D (ASEAN), COO Form IJEPA, SHTI — semua sudah dipasang di `/quality-legality`.
 
-## 2. Disebut PRD §3.4 — belum ada kartu terpisah (4)
-
-Saat ini COO jadi satu kartu generik "Preferential forms E, D, IJEPA, JIEPA".
-Pecah jadi kartu terpisah jika scannya ada:
+## 2. COO yang masih menyatu (2)
 
 | # | Dokumen | Catatan |
 |---|---|---|
-| 5 | COO Form E (Tiongkok) | Cek apakah scan `certificate_certificate_of_origin_form_e_d.jpg` sudah meng-cover Form E |
-| 6 | COO Form D (ASEAN) | Belum ada |
-| 7 | COO Form IJEPA (Indonesia–Jepang) | Belum ada |
-| 8 | COO Form JIEPA (Jepang–Indonesia) | Belum ada |
+| 1 | COO Form E (Tiongkok) | Masih menyatu di kartu "Form E & JIEPA" — pecah jika ada scan khusus |
+| 2 | COO Form JIEPA | Sama seperti di atas |
 
 ## 3. Scan sudah ada — sudah tampil (4) ✓
 

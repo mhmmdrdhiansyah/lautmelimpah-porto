@@ -3,18 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/site/product-card";
 import { Bubbles } from "@/components/site/bubbles";
 import { Reveal } from "@/components/site/reveal";
+import { HeroCards } from "@/components/site/hero-cards";
 
 export const dynamic = "force-dynamic";
 
-const HERO_IMG = "/img/hero_section.jpg";
 const BELITUNG_IMG = "/img/provenance_fishermen_dock.jpg";
-
-const FACTS = [
-  "Origin Belitung Island",
-  "Export ports Tanjung Priok & Tanjung Pandan",
-  "Compliance HACCP / SKP / HC",
-  "MOQ from 1 reefer container",
-];
 
 export default async function Home() {
   const featured = await prisma.product.findMany({
@@ -26,24 +19,17 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-end overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={HERO_IMG}
-          alt="Coral reef in the clear waters around Belitung"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/30" />
+      <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden bg-foreground">
         <Bubbles />
-        <div className="relative m-6 max-w-xl rounded-md bg-foreground p-8 text-background">
-          <h1 className="font-display text-4xl font-semibold leading-tight md:text-5xl">
+        <div className="relative z-10 mx-auto max-w-3xl px-4 pt-16 text-center text-background">
+          <h1 className="font-display text-4xl font-semibold leading-tight md:text-6xl">
             Belitung seafood exporter
           </h1>
-          <p className="mt-4 text-white/90">
+          <p className="mx-auto mt-4 max-w-xl text-background/90">
             For international buyers: six commodities from Belitung Island,
             Indonesia. Prices on request.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               href="/inquiry"
               className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
@@ -52,19 +38,13 @@ export default async function Home() {
             </Link>
             <Link
               href="/commodities"
-              className="rounded-md border border-white/60 px-5 py-2.5 text-sm text-white hover:bg-white/10"
+              className="rounded-md border border-background/40 px-5 py-2.5 text-sm text-background hover:bg-background/10"
             >
               See the commodities
             </Link>
           </div>
         </div>
-        <div className="relative bg-black/50 px-6 py-3">
-          <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-white/90">
-            {FACTS.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        </div>
+        <HeroCards />
       </section>
 
       <Reveal>

@@ -135,6 +135,7 @@ const documents = [
     registrationNumber: "Registered",
     descriptionEn:
       "Company registration covering wholesale fishery trade and export activities (KBLI wholesale of fishery results and export).",
+    badgeIconUrl: "/img/legality_nib_oss.jpg",
   },
   {
     titleEn: "Corporate Taxpayer Number (NPWP)",
@@ -142,6 +143,7 @@ const documents = [
     documentType: "COMPANY_LEGALITY" as DocumentType,
     registrationNumber: "Registered",
     descriptionEn: "Registered corporate taxpayer with registered exporter status.",
+    badgeIconUrl: "/img/legality_npwp_exporter.jpg",
   },
   {
     titleEn: "HACCP",
@@ -159,6 +161,7 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Official processing feasibility certificate issued by KKP for partner fish processing units.",
+    badgeIconUrl: "/img/certificate_skp_kkp.jpg",
   },
   {
     titleEn: "Health Certificate (HC)",
@@ -176,15 +179,34 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Halal assurance for Middle East, Malaysia and global halal-market segments.",
+    badgeIconUrl: "/img/certificate_halal_bpjph.jpg",
   },
   {
-    titleEn: "Certificate of Origin (COO / SKA)",
+    titleEn: "Certificate of Origin (COO / SKA) — Form E & JIEPA",
     issuer: "Preferential forms E, D, IJEPA, JIEPA",
     documentType: "EXPORT_CERTIFICATE" as DocumentType,
     registrationNumber: null,
     descriptionEn:
       "Form E (China), Form D (ASEAN), Form IJEPA/JIEPA (Japan) for import-duty relief at destination.",
     badgeIconUrl: "/img/certificate_certificate_of_origin_form_e_d.jpg",
+  },
+  {
+    titleEn: "Certificate of Origin — Form D (ASEAN)",
+    issuer: "ATIGA Form D",
+    documentType: "EXPORT_CERTIFICATE" as DocumentType,
+    registrationNumber: null,
+    descriptionEn:
+      "Preferential Certificate of Origin under ASEAN Trade in Goods Agreement for duty relief within ASEAN.",
+    badgeIconUrl: "/img/certificate_coo_form_d_asean.jpg",
+  },
+  {
+    titleEn: "Certificate of Origin — Form IJEPA",
+    issuer: "Indonesia–Japan Economic Partnership Agreement",
+    documentType: "EXPORT_CERTIFICATE" as DocumentType,
+    registrationNumber: null,
+    descriptionEn:
+      "Preferential Certificate of Origin for shipments to Japan under IJEPA.",
+    badgeIconUrl: "/img/certificate_coo_form_ijepa.jpg",
   },
   {
     titleEn: "SHTI (Catch Certificate)",
