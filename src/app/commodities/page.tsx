@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/site/product-card";
+import { Reveal } from "@/components/site/reveal";
 
 export const dynamic = "force-dynamic";
 
@@ -63,8 +64,10 @@ export default async function CommoditiesPage({
       </div>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
+        {products.map((p, i) => (
+          <Reveal key={p.id} delay={(i % 3) * 0.12}>
+            <ProductCard product={p} />
+          </Reveal>
         ))}
       </div>
     </div>

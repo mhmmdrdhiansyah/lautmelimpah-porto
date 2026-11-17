@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/site/reveal";
 
 const ROUTES = {
   sea: [
@@ -52,6 +53,7 @@ export default function LogisticsPage() {
       </p>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <Reveal>
         <Card>
           <CardHeader>
             <CardTitle className="font-display text-2xl">Sea freight</CardTitle>
@@ -79,7 +81,9 @@ export default function LogisticsPage() {
             </Table>
           </CardContent>
         </Card>
+        </Reveal>
 
+        <Reveal delay={0.15}>
         <Card>
           <CardHeader>
             <CardTitle className="font-display text-2xl">Air freight</CardTitle>
@@ -107,6 +111,7 @@ export default function LogisticsPage() {
             </Table>
           </CardContent>
         </Card>
+        </Reveal>
       </div>
 
       <div className="mt-10">

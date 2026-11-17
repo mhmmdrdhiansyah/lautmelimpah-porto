@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/site/product-card";
 import { Bubbles } from "@/components/site/bubbles";
+import { Reveal } from "@/components/site/reveal";
 
 export const dynamic = "force-dynamic";
 
@@ -68,7 +69,8 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2">
+      <Reveal>
+        <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2">
         <div className="relative aspect-[4/3] overflow-hidden rounded-md">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -101,20 +103,26 @@ export default async function Home() {
             See the commodities
           </Link>
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <h2 className="font-display text-2xl font-semibold">
-          Featured commodities
-        </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </section>
+      <Reveal>
+        <section className="mx-auto max-w-6xl px-4 pb-16">
+          <h2 className="font-display text-2xl font-semibold">
+            Featured commodities
+          </h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p, i) => (
+              <Reveal key={p.id} delay={i * 0.12}>
+                <ProductCard product={p} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="bg-foreground px-4 py-16 text-background">
+      <Reveal>
+        <section className="bg-foreground px-4 py-16 text-background">
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-md">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -152,23 +160,26 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 text-center">
-        <h2 className="font-display text-4xl font-semibold">
-          Request a quotation
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Build your inquiry list and receive a quotation by email — prices
-          follow your specifications, volumes and Incoterms.
-        </p>
-        <Link
-          href="/inquiry"
-          className="mt-8 inline-block rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
-        >
-          Request a quotation
-        </Link>
-      </section>
+      <Reveal>
+        <section className="mx-auto max-w-6xl px-4 py-20 text-center">
+          <h2 className="font-display text-4xl font-semibold">
+            Request a quotation
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Build your inquiry list and receive a quotation by email — prices
+            follow your specifications, volumes and Incoterms.
+          </p>
+          <Link
+            href="/inquiry"
+            className="mt-8 inline-block rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
+          >
+            Request a quotation
+          </Link>
+        </section>
+      </Reveal>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
 import { ColdChain } from "@/components/site/cold-chain";
+import { Reveal } from "@/components/site/reveal";
 
 export const dynamic = "force-dynamic";
 
@@ -39,8 +40,9 @@ export default async function QualityLegalityPage() {
               {TYPE_LABEL[type]}
             </h2>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
-              {docs.map((d) => (
-                <div key={d.id} className="rounded-md border border-border bg-card p-5">
+              {docs.map((d, di) => (
+                <Reveal key={d.id} delay={(di % 3) * 0.12}>
+                <div className="rounded-md border border-border bg-card p-5">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="font-medium leading-snug">{d.titleEn}</h3>
                     <Badge variant="outline" className="shrink-0">
@@ -55,6 +57,7 @@ export default async function QualityLegalityPage() {
                     {d.registrationNumber ?? "Registered"}
                   </p>
                 </div>
+                </Reveal>
               ))}
             </div>
           </section>
