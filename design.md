@@ -81,3 +81,5 @@ Urutan alasan buyer memilih LautMelimpah:
 4. Foto asli Belitung (sekarang 7 stand-in).
 5. ~~Bahasa~~ → **putusan klien: EN saja, tanpa versi Indonesia.**
 6. Stack sudah tetap di PRD §4.1 (Next.js 15 + Tailwind + shadcn/ui + Prisma + MySQL); mockup statis = desain referensi, token diterjemahkan ke Tailwind saat scaffold. Urutan: mockup statis final → scaffold Next.js.
+
+> Pilihan final user (2026-11-17): Varian A (foto full-bleed + box teks solid + bubbles) karena visualisasi gambarnya paling mencolok dan tidak banyak space.

@@ -9,7 +9,11 @@ export const metadata: Metadata = {
     "B2B seafood export and sourcing from Belitung Island, Indonesia. Six commodities, certified cold chain. Prices on request.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className="h-full antialiased">
       <head>
