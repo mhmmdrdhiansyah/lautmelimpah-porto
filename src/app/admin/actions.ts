@@ -39,11 +39,22 @@ export async function logout() {
   redirect("/admin/login");
 }
 
+const LEAD_STATUSES = [
+  "NEW",
+  "QUOTED",
+  "NEGOTIATING",
+  "CLOSED_WON",
+  "CLOSED_LOST",
+] as const;
+
 export async function updateLeadStatus(id: number, status: string) {
   await requireAdmin();
+  if (!(LEAD_STATUSES as readonly string[]).includes(status)) {
+    throw new Error(`Invalid lead status: ${status}`);
+  }
   await prisma.inquiry.update({
     where: { id },
-    data: { status: status as never },
+    data: { status: status as (typeof LEAD_STATUSES)[number] },
   });
   revalidatePath("/admin/leads");
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -20,10 +20,14 @@ import { submitRfq } from "./actions";
 type FieldErrors = Record<string, string>;
 
 export default function InquiryPage() {
-  const items = useInquiryStore((s) => s.items);
+  const items = useInquiryStore((s) => (s.itemsMounted ? s.items : []));
   const remove = useInquiryStore((s) => s.remove);
   const setQuantity = useInquiryStore((s) => s.setQuantity);
   const clear = useInquiryStore((s) => s.clear);
+
+  useEffect(() => {
+    useInquiryStore.setState({ itemsMounted: true });
+  }, []);
 
   const [form, setForm] = useState({
     buyerName: "",

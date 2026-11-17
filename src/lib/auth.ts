@@ -42,7 +42,20 @@ export async function checkAdminCredentials(
   const hash = [...new Uint8Array(digest)]
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
-  return email === expectedEmail && hash === expectedHash;
+  return (
+    email === expectedEmail && timingSafeEqual(hash, expectedHash)
+  );
+}
+
+// SAFETY: both inputs are same-length hex digests here; a length mismatch
+// returns early without leaking prefix information about the expected hash.
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return diff === 0;
 }
 
 export { COOKIE_NAME };

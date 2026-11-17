@@ -55,4 +55,30 @@ describe("submitRfq", () => {
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.fieldErrors.items).toBeTruthy();
   });
+
+  it("drops items whose product no longer exists", async () => {
+    vi.mocked(prisma.product.findMany).mockResolvedValueOnce([
+      { id: 1, nameEn: "Crab" },
+    ] as never);
+    const r = await submitRfq({
+      ...input,
+      items: [
+        { productId: 1, estimatedQuantity: "1 MT" },
+        { productId: 999, estimatedQuantity: "2 MT" },
+      ],
+    });
+    expect(r.ok).toBe(true);
+    const created = vi.mocked(prisma.inquiry.create).mock.calls.at(-1)![0];
+    expect(created.data.items?.create).toHaveLength(1);
+  });
+
+  it("rejects when no requested product exists", async () => {
+    vi.mocked(prisma.product.findMany).mockResolvedValueOnce([]);
+    const r = await submitRfq({
+      ...input,
+      items: [{ productId: 999, estimatedQuantity: "2 MT" }],
+    });
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.fieldErrors.items).toBeTruthy();
+  });
 });

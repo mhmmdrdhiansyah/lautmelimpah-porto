@@ -29,7 +29,7 @@ function makeCode(): string {
 export async function submitRfq(input: unknown): Promise<SubmitRfqResult> {
   const parsed = rfqSchema.safeParse(input);
   if (!parsed.success) {
-    const fieldErrors: SubmitRfqResult extends never ? never : Record<string, string> = {};
+    const fieldErrors: Record<string, string> = {};
     for (const issue of parsed.error.issues) {
       const key = String(issue.path[0] ?? "form");
       if (!fieldErrors[key]) fieldErrors[key] = issue.message;
@@ -38,40 +38,61 @@ export async function submitRfq(input: unknown): Promise<SubmitRfqResult> {
   }
 
   const data = parsed.data;
-  const code = makeCode();
   const products = await prisma.product.findMany({
     where: { id: { in: data.items.map((i) => i.productId) } },
   });
+  const knownIds = new Set(products.map((p) => p.id));
+  const validItems = data.items.filter((i) => knownIds.has(i.productId));
+  if (validItems.length === 0) {
+    return {
+      ok: false,
+      fieldErrors: {
+        items: "None of the requested products is available anymore.",
+      },
+    };
+  }
   const names = new Map(products.map((p) => [p.id, p.nameEn]));
 
-  await prisma.inquiry.create({
-    data: {
-      inquiryCode: code,
-      buyerName: data.buyerName,
-      companyName: data.companyName,
-      country: data.country,
-      email: data.email,
-      phoneWhatsapp: data.phoneWhatsapp || null,
-      preferredIncoterm: data.preferredIncoterm,
-      shippingMode: data.shippingMode,
-      destinationPort: data.destinationPort || null,
-      additionalNotes: data.additionalNotes || null,
-      items: {
-        create: data.items.map((i) => ({
-          productId: i.productId,
-          requestedForm: i.requestedForm || null,
-          requestedSize: i.requestedSize || null,
-          estimatedQuantity: i.estimatedQuantity,
-        })),
-      },
+  const createData = (code: string) => ({
+    inquiryCode: code,
+    buyerName: data.buyerName,
+    companyName: data.companyName,
+    country: data.country,
+    email: data.email,
+    phoneWhatsapp: data.phoneWhatsapp || null,
+    preferredIncoterm: data.preferredIncoterm,
+    shippingMode: data.shippingMode,
+    destinationPort: data.destinationPort || null,
+    additionalNotes: data.additionalNotes || null,
+    items: {
+      create: validItems.map((i) => ({
+        productId: i.productId,
+        requestedForm: i.requestedForm || null,
+        requestedSize: i.requestedSize || null,
+        estimatedQuantity: i.estimatedQuantity,
+      })),
     },
   });
+
+  const code = makeCode();
+  try {
+    await prisma.inquiry.create({ data: createData(code) });
+  } catch (e) {
+    // Retry once on a unique-constraint collision of the generated code.
+    const isP2002 =
+      typeof e === "object" && e !== null && "code" in e && e.code === "P2002";
+    if (isP2002) {
+      await prisma.inquiry.create({ data: createData(makeCode()) });
+    } else {
+      throw e;
+    }
+  }
 
   try {
     await sendRfqEmails({
       code,
       buyer: { name: data.buyerName, email: data.email },
-      items: data.items.map((i) => ({
+      items: validItems.map((i) => ({
         name: names.get(i.productId) ?? `Product #${i.productId}`,
         quantity: i.estimatedQuantity,
       })),

@@ -11,6 +11,9 @@ export type InquiryItem = {
 
 type InquiryState = {
   items: InquiryItem[];
+  // Set true after the client hydrates so persisted items are not rendered on
+  // the server pass (avoids hydration mismatch); never persisted.
+  itemsMounted: boolean;
   add: (productId: number, name: string, form?: string, size?: string) => void;
   remove: (productId: number) => void;
   setQuantity: (productId: number, q: string) => void;
@@ -21,6 +24,7 @@ export const useInquiryStore = create<InquiryState>()(
   persist(
     (set) => ({
       items: [],
+      itemsMounted: false,
       add: (productId, name, form, size) =>
         set((state) =>
           state.items.some((i) => i.productId === productId)
