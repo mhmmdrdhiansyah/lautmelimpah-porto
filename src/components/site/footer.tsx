@@ -27,7 +27,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-background/20 py-4 text-center text-xs opacity-70">
-        © 2026 LautMelimpah · Photographs via Wikimedia Commons
+        © 2026 LautMelimpah
       </div>
     </footer>
   );

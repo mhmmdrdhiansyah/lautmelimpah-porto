@@ -27,7 +27,7 @@ const products = [
     peakMonths: null,
     descriptionEn:
       "Reef grouper from Belitung coral waters, supplied live, chilled whole gutted, or as IQF fillet for live-fish markets and HORECA buyers.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_coral_tiger_grouper.jpg",
     isFeatured: true,
   },
   {
@@ -46,7 +46,7 @@ const products = [
     peakMonths: "March-August",
     descriptionEn:
       "Pasteurized blue swimming crab meat in Colossal, Jumbo Lump, Backfin and Claw grades for processors and foodservice in the US, Japan and Singapore.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_blue_swimming_crab.jpg",
     isFeatured: true,
   },
   {
@@ -65,7 +65,7 @@ const products = [
     peakMonths: null,
     descriptionEn:
       "Squid and cuttlefish from the Natuna Sea, offered whole round, cleaned tube or rings, block frozen or IQF for Asian and EU markets.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_squid_cuttlefish.jpg",
     isFeatured: true,
   },
   {
@@ -84,7 +84,7 @@ const products = [
     peakMonths: null,
     descriptionEn:
       "Spanish mackerel landed at Tanjung Pandan, supplied WR, HGT or steak/loin for Southeast Asian and Middle Eastern buyers.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_spanish_mackerel.jpg",
     isFeatured: false,
   },
   {
@@ -103,7 +103,7 @@ const products = [
     peakMonths: null,
     descriptionEn:
       "Red snapper and emperor fish WGS or filleted, chilled or IQF, for Australian, US, European and Singapore buyers.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_red_snapper_emperor.jpg",
     isFeatured: false,
   },
   {
@@ -122,7 +122,7 @@ const products = [
     peakMonths: "October-March",
     descriptionEn:
       "Dried and smoked sea cucumber for Hong Kong, Chinese and Singapore markets, processed with certified UPI partners.",
-    imageUrl: "/img/placeholder.svg",
+    imageUrl: "/img/commodity_dried_sea_cucumber.jpg",
     isFeatured: false,
   },
 ];
@@ -150,6 +150,7 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Hazard Analysis Critical Control Point certification at partner processing units, guaranteeing food safety throughout processing.",
+    badgeIconUrl: "/img/certificate_haccp_grade_a_upi_belitung.jpg",
   },
   {
     titleEn: "SKP (Processing Feasibility Certificate)",
@@ -166,6 +167,7 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Official health certificate issued per shipment by BPPMHKP/BKIPM for export consignments.",
+    badgeIconUrl: "/img/certificate_bkipm_health_certificate.jpg",
   },
   {
     titleEn: "Halal Certification",
@@ -182,6 +184,7 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Form E (China), Form D (ASEAN), Form IJEPA/JIEPA (Japan) for import-duty relief at destination.",
+    badgeIconUrl: "/img/certificate_certificate_of_origin_form_e_d.jpg",
   },
   {
     titleEn: "SHTI (Catch Certificate)",
@@ -190,6 +193,7 @@ const documents = [
     registrationNumber: null,
     descriptionEn:
       "Proof of legal, IUU-free catch required for EU, Japan and US markets.",
+    badgeIconUrl: "/img/certificate_shti_catch_certificate_non_iuu.jpg",
   },
 ];
 

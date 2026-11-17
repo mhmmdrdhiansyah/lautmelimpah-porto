@@ -53,6 +53,14 @@ export default async function QualityLegalityPage() {
                   <p className="mt-3 text-sm leading-relaxed">
                     {d.descriptionEn}
                   </p>
+                  {d.badgeIconUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={d.badgeIconUrl}
+                      alt={`${d.titleEn} certificate`}
+                      className="mt-3 w-full rounded-sm border border-border object-cover"
+                    />
+                  )}
                   <p className="mt-3 text-xs text-muted-foreground">
                     {d.registrationNumber ?? "Registered"}
                   </p>

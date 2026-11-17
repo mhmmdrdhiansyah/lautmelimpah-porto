@@ -6,10 +6,8 @@ import { Reveal } from "@/components/site/reveal";
 
 export const dynamic = "force-dynamic";
 
-const HERO_IMG =
-  "https://commons.wikimedia.org/wiki/Special:FilePath/Coral_Outcrop_Flynn_Reef.jpg?width=1600";
-const BELITUNG_IMG =
-  "https://commons.wikimedia.org/wiki/Special:FilePath/Tanjung_Tinggi_Beach.jpg?width=1600";
+const HERO_IMG = "/img/hero_section.jpg";
+const BELITUNG_IMG = "/img/facility_certified_cold_storage_upi.jpg";
 
 const FACTS = [
   "Origin Belitung Island",
@@ -75,7 +73,7 @@ export default async function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={BELITUNG_IMG}
-            alt="Tanjung Tinggi beach, Belitung Island"
+            alt="Certified cold storage at partner UPI"
             className="h-full w-full object-cover"
           />
         </div>
@@ -127,7 +125,7 @@ export default async function Home() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-md">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://commons.wikimedia.org/wiki/Special:FilePath/Container-Terminal_Bremerhaven_02.jpg?width=1600"
+              src="/img/facility_certified_cold_storage_upi.jpg"
               alt="Reefer containers at a container terminal"
               className="h-full w-full object-cover"
             />
