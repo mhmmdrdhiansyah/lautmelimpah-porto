@@ -3,6 +3,9 @@ services:
     build: .
     ports: ["3000:3000"]
     env_file: .env
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql://app:app@mysql:3306/lautmelimpah
     networks: [mysql_net]
 networks:
   mysql_net:
