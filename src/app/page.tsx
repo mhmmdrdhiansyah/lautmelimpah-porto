@@ -7,7 +7,7 @@ import { Reveal } from "@/components/site/reveal";
 export const dynamic = "force-dynamic";
 
 const HERO_IMG = "/img/hero_section.jpg";
-const BELITUNG_IMG = "/img/facility_certified_cold_storage_upi.jpg";
+const BELITUNG_IMG = "/img/provenance_fishermen_dock.jpg";
 
 const FACTS = [
   "Origin Belitung Island",
@@ -73,7 +73,7 @@ export default async function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={BELITUNG_IMG}
-            alt="Certified cold storage at partner UPI"
+            alt="Fishing boats at a Belitung dock"
             className="h-full w-full object-cover"
           />
         </div>

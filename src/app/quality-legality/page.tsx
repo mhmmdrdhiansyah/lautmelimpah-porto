@@ -29,6 +29,24 @@ export default async function QualityLegalityPage() {
         shipment.
       </p>
 
+      <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/processing_upi_cleanroom.jpg"
+            alt="Grading and packing at a certified UPI facility"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="flex flex-col justify-center">
+          <p className="leading-relaxed text-muted-foreground">
+            Processing happens at certified UPI partners: grading and packing
+            under HACCP controls, chilled on ice, sealed with export
+            documentation.
+          </p>
+        </div>
+      </div>
+
       <ColdChain />
 
       {groups.map((type) => {

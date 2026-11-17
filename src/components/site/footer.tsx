@@ -5,7 +5,8 @@ export function Footer() {
     <footer className="mt-16 bg-foreground text-background">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
         <div>
-          <p className="font-display text-lg font-semibold">LautMelimpah</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo-light.svg" alt="LautMelimpah" className="h-12 w-auto" />
           <p className="mt-2 text-sm opacity-80">
             Seafood export trading and sourcing partner, Tanjung Pandan, Belitung,
             Indonesia.

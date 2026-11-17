@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="110" fill="#0A2540"/>
+  <!-- Decorative ocean rings -->
+  <circle cx="256" cy="256" r="210" stroke="#0D6E8A" stroke-width="8" stroke-dasharray="16 16"/>
+  <!-- Ocean Waves -->
+  <path d="M100 370C150 345 200 395 256 370C312 345 362 395 412 370" stroke="#0D6E8A" stroke-width="26" stroke-linecap="round"/>
+  <!-- Sailboat Hull -->
+  <path d="M140 300C190 335 322 335 372 300L348 335C305 360 207 360 164 335L140 300Z" fill="#D96B43"/>
+  <!-- Forward Sail -->
+  <path d="M268 130L268 280C268 280 370 270 354 210C338 160 268 130 268 130Z" fill="#5EEAD4"/>
+  <!-- Main Mast Sail -->
+  <path d="M242 110L156 270C210 280 242 280 242 280V110Z" fill="#FFFFFF"/>
+</svg>

@@ -8,15 +8,9 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3">
-        <Link href="/" className="flex items-center gap-1.5 text-foreground">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="4" rx="1" fill="currentColor" />
-            <rect x="4" y="10" width="10" height="4" rx="1" fill="currentColor" />
-            <rect x="4" y="16" width="6" height="4" rx="1" fill="currentColor" />
-          </svg>
-          <span className="font-display text-base font-semibold tracking-tight md:text-lg">
-            LautMelimpah
-          </span>
+        <Link href="/" className="flex items-center text-foreground">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo-dark.svg" alt="LautMelimpah" className="h-9 w-auto" />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 text-sm md:flex">

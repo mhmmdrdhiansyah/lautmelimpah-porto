@@ -8,6 +8,16 @@ export const metadata: Metadata = {
   title: "LautMelimpah — Belitung Seafood Exporter",
   description:
     "B2B seafood export and sourcing from Belitung Island, Indonesia. Six commodities, certified cold chain. Prices on request.",
+  openGraph: {
+    title: "LautMelimpah — Belitung Seafood Exporter",
+    description:
+      "Six commodities from Belitung Island, Indonesia. Certified cold chain. Prices on request.",
+    images: ["/og.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.jpg"],
+  },
 };
 
 export default function RootLayout({

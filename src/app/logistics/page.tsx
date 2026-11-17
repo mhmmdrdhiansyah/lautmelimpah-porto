@@ -52,6 +52,25 @@ export default function LogisticsPage() {
         chilled premium products.
       </p>
 
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/logistics_port_tanjung_pandan.jpg"
+            alt="Port of Tanjung Pandan, Belitung"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="relative aspect-[16/9] overflow-hidden rounded-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/logistics_40ft_reefer_container.jpg"
+            alt="40ft reefer container"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <Reveal>
         <Card>
