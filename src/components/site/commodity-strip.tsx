@@ -77,7 +77,7 @@ export function CommodityStrip() {
 
         <h2
           ref={headlineRef}
-          className="mb-8 flex max-w-[760px] flex-wrap justify-center px-4 text-center font-display text-[24px] font-medium leading-[1.15] tracking-tight text-white sm:text-[30px] md:mb-[48px] md:px-0 md:text-[38px]"
+          className="mb-8 flex max-w-[690px] flex-wrap justify-center px-4 text-center font-display text-[27px] font-semibold leading-[1.15] tracking-tight text-white sm:text-[36px] md:mb-[48px] md:px-0 md:text-[45px]"
         >
           {WORDS.map((word, i) => (
             <Word key={i} progress={scrollYProgress} range={[i / WORDS.length, i / WORDS.length + 1 / WORDS.length]}>
