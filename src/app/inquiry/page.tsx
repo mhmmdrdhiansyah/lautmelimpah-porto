@@ -71,6 +71,12 @@ export default function InquiryPage() {
       toast("Request received");
     } else {
       setErrors(result.fieldErrors as FieldErrors);
+      const firstInvalid = Object.keys(result.fieldErrors)[0];
+      if (firstInvalid && firstInvalid !== "items") {
+        document.getElementById(firstInvalid)?.focus();
+      } else {
+        document.getElementById("inquiry-list")?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }
 
@@ -94,6 +100,12 @@ export default function InquiryPage() {
     </div>
   );
 
+  // Wire each Input/Textarea to its error message for screen readers.
+  const inputProps = (name: string) =>
+    errors[name]
+      ? { "aria-invalid": true, "aria-describedby": `${name}-error` as const }
+      : {};
+
   if (code) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-24 text-center">
@@ -113,8 +125,13 @@ export default function InquiryPage() {
 
   return (
     <div className="mx-auto grid max-w-6xl gap-12 px-4 py-12 md:grid-cols-2">
-      <section>
+      <section id="inquiry-list">
         <h1 className="font-display text-3xl font-semibold">Inquiry list</h1>
+        {errors.items && (
+          <p role="alert" className="mt-4 text-sm text-destructive">
+            {errors.items}
+          </p>
+        )}
         {items.length === 0 ? (
           <p className="mt-4 text-sm text-muted-foreground">
             Your inquiry list is empty.{" "}
@@ -196,10 +213,10 @@ export default function InquiryPage() {
       </section>
 
       <form onSubmit={onSubmit} className="flex flex-col gap-4" noValidate>
-        {field("buyerName", "Buyer name", <Input id="buyerName" value={form.buyerName} onChange={set("buyerName")} />)}
-        {field("companyName", "Company", <Input id="companyName" value={form.companyName} onChange={set("companyName")} />)}
-        {field("country", "Country", <Input id="country" value={form.country} onChange={set("country")} />)}
-        {field("email", "Email", <Input id="email" type="email" value={form.email} onChange={set("email")} />)}
+        {field("buyerName", "Buyer name", <Input id="buyerName" {...inputProps("buyerName")} value={form.buyerName} onChange={set("buyerName")} />)}
+        {field("companyName", "Company", <Input id="companyName" {...inputProps("companyName")} value={form.companyName} onChange={set("companyName")} />)}
+        {field("country", "Country", <Input id="country" {...inputProps("country")} value={form.country} onChange={set("country")} />)}
+        {field("email", "Email", <Input id="email" type="email" {...inputProps("email")} value={form.email} onChange={set("email")} />)}
         {field("phoneWhatsapp", "Phone / WhatsApp", <Input id="phoneWhatsapp" value={form.phoneWhatsapp} onChange={set("phoneWhatsapp")} />, true)}
         {field(
           "preferredIncoterm",

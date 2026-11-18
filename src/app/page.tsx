@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/site/product-card";
-import { Bubbles } from "@/components/site/bubbles";
 import { Reveal } from "@/components/site/reveal";
-import { HeroCards } from "@/components/site/hero-cards";
+import { CommodityStrip } from "@/components/site/commodity-strip";
 
 export const dynamic = "force-dynamic";
 
@@ -19,33 +18,7 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden bg-foreground">
-        <Bubbles />
-        <div className="relative z-10 mx-auto max-w-3xl px-4 pt-16 text-center text-background">
-          <h1 className="font-display text-4xl font-semibold leading-tight md:text-6xl">
-            Belitung seafood exporter
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-background/90">
-            For international buyers: six commodities from Belitung Island,
-            Indonesia. Prices on request.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/inquiry"
-              className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
-            >
-              Request a quotation
-            </Link>
-            <Link
-              href="/commodities"
-              className="rounded-md border border-background/40 px-5 py-2.5 text-sm text-background hover:bg-background/10"
-            >
-              See the commodities
-            </Link>
-          </div>
-        </div>
-        <HeroCards />
-      </section>
+      <CommodityStrip />
 
       <Reveal>
         <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2">

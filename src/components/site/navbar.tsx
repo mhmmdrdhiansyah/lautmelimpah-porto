@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { InquiryDrawer } from "./inquiry-drawer";
 
 export function Navbar() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3">
