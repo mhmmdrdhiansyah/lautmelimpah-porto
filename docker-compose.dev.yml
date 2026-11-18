@@ -1,0 +1,27 @@
+# Dev mode: source code di-mount, hot-reload via `next dev`.
+# Jalankan:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up web-dev
+services:
+  web-dev:
+    build:
+      context: .
+      target: deps # stage deps sudah punya node_modules + prisma client
+    command: sh -c "npx prisma generate && npm run dev"
+    ports: ["3000:3000"]
+    env_file: .env
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql://app:app@mysql:3306/lautmelimpah
+      NODE_ENV: development
+      WATCHPACK_POLLING: "true" # hot-reload andal meski inotify lemah di mount
+    volumes:
+      - .:/app # source di-mount, edit langsung terlihat
+      - node_modules_dev:/app/node_modules # dependency tetap milik container
+    networks: [mysql_net]
+
+volumes:
+  node_modules_dev:
+
+networks:
+  mysql_net:
+    external: true
